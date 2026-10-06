@@ -1,0 +1,3462 @@
+<!doctype html>
+<html lang="uz" data-theme="light">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
+    <title>MEZZO — Coffee &amp; Kitchen</title>
+    <meta
+      name="description"
+      content="MEZZO — Toshkent markazidagi mutaxassis qahva va mavsumiy taomlar kafesi. Menyu, stol band qilish, ish vaqti va manzil."
+    />
+    <meta name="theme-color" content="#1b140f" />
+    <meta property="og:title" content="MEZZO — Coffee & Kitchen" />
+    <meta
+      property="og:description"
+      content="Mutaxassis qahva, yangi pishiriqlar va mavsumiy taomlar. Toshkent, Amir Temur shoh ko'chasi 108."
+    />
+    <meta property="og:type" content="restaurant" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..900;1,9..144,400..700&family=Manrope:wght@300..800&display=swap"
+      rel="stylesheet"
+    />
+
+    <link
+      rel="icon"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%23b4641f'/%3E%3Cpath d='M28 30h36a14 14 0 0 1 0 28h-4v4a12 12 0 0 1-12 12H40a12 12 0 0 1-12-12V30zm36 8v12a6 6 0 0 0 0-12z' fill='%23fff'/%3E%3C/svg%3E"
+    />
+
+    <style>
+      /* ============================================================
+   TOKENS
+   ============================================================ */
+      :root {
+        --font-display: "Fraunces", Georgia, serif;
+        --font-body:
+          "Manrope", system-ui, -apple-system, "Segoe UI", sans-serif;
+
+        --bg: #fbf7f2;
+        --bg-soft: #f3ece3;
+        --surface: #ffffff;
+        --surface-2: #fffdfa;
+        --text: #1d1611;
+        --muted: #6d6158;
+        --border: #e7ddd0;
+        --accent: #b4641f;
+        --accent-ink: #8d4a12;
+        --accent-soft: #f6e7d6;
+        --forest: #245240;
+        --shadow-sm:
+          0 1px 2px rgba(29, 22, 17, 0.06), 0 2px 8px rgba(29, 22, 17, 0.05);
+        --shadow-md: 0 10px 30px -12px rgba(29, 22, 17, 0.22);
+        --shadow-lg: 0 30px 70px -30px rgba(29, 22, 17, 0.35);
+        --radius: 18px;
+        --radius-sm: 12px;
+        --radius-lg: 28px;
+        --maxw: 1200px;
+        --gutter: clamp(16px, 4vw, 40px);
+        --nav-h: 72px;
+      }
+
+      @media (prefers-color-scheme: dark) {
+        :root:not([data-theme="light"]) {
+          --bg: #15100c;
+          --bg-soft: #1c1611;
+          --surface: #201913;
+          --surface-2: #261e17;
+          --text: #f6efe6;
+          --muted: #a99b8d;
+          --border: #352a21;
+          --accent: #e08c3c;
+          --accent-ink: #f0a559;
+          --accent-soft: #2c2017;
+          --forest: #5fa384;
+          --shadow-sm:
+            0 1px 2px rgba(0, 0, 0, 0.4), 0 2px 10px rgba(0, 0, 0, 0.3);
+          --shadow-md: 0 12px 34px -14px rgba(0, 0, 0, 0.7);
+          --shadow-lg: 0 34px 80px -34px rgba(0, 0, 0, 0.85);
+        }
+      }
+      :root[data-theme="dark"] {
+        --bg: #15100c;
+        --bg-soft: #1c1611;
+        --surface: #201913;
+        --surface-2: #261e17;
+        --text: #f6efe6;
+        --muted: #a99b8d;
+        --border: #352a21;
+        --accent: #e08c3c;
+        --accent-ink: #f0a559;
+        --accent-soft: #2c2017;
+        --forest: #5fa384;
+        --shadow-sm:
+          0 1px 2px rgba(0, 0, 0, 0.4), 0 2px 10px rgba(0, 0, 0, 0.3);
+        --shadow-md: 0 12px 34px -14px rgba(0, 0, 0, 0.7);
+        --shadow-lg: 0 34px 80px -34px rgba(0, 0, 0, 0.85);
+      }
+
+      /* ============================================================
+   BASE
+   ============================================================ */
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+      }
+      html {
+        -webkit-text-size-adjust: 100%;
+        scroll-behavior: smooth;
+      }
+      @media (prefers-reduced-motion: reduce) {
+        html {
+          scroll-behavior: auto;
+        }
+      }
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--text);
+        font-family: var(--font-body);
+        font-size: clamp(15px, 0.4vw + 14px, 17px);
+        line-height: 1.65;
+        -webkit-font-smoothing: antialiased;
+        overflow-x: hidden;
+      }
+      body.is-locked {
+        overflow: hidden;
+      }
+      img {
+        max-width: 100%;
+        display: block;
+        height: auto;
+      }
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+      button,
+      input,
+      select,
+      textarea {
+        font: inherit;
+        color: inherit;
+      }
+      h1,
+      h2,
+      h3,
+      h4 {
+        font-family: var(--font-display);
+        font-weight: 600;
+        line-height: 1.08;
+        letter-spacing: -0.02em;
+        margin: 0;
+      }
+      h1 {
+        font-size: clamp(2.4rem, 6.4vw, 4.6rem);
+      }
+      h2 {
+        font-size: clamp(1.9rem, 3.6vw, 3rem);
+      }
+      h3 {
+        font-size: clamp(1.15rem, 1.4vw, 1.4rem);
+      }
+      p {
+        margin: 0;
+      }
+      ::selection {
+        background: var(--accent);
+        color: #fff;
+      }
+      :focus-visible {
+        outline: 2.5px solid var(--accent);
+        outline-offset: 3px;
+        border-radius: 6px;
+      }
+
+      .wrap {
+        width: 100%;
+        max-width: var(--maxw);
+        margin-inline: auto;
+        padding-inline: var(--gutter);
+      }
+      .section {
+        padding-block: clamp(64px, 9vw, 128px);
+      }
+      .center {
+        text-align: center;
+      }
+      .muted {
+        color: var(--muted);
+      }
+      .sr-only {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0 0 0 0);
+        white-space: nowrap;
+        border: 0;
+      }
+
+      .eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-size: 0.72rem;
+        font-weight: 700;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+        color: var(--accent-ink);
+      }
+      .eyebrow::before {
+        content: "";
+        width: 26px;
+        height: 1.5px;
+        background: currentColor;
+        opacity: 0.6;
+      }
+      .lead {
+        color: var(--muted);
+        font-size: clamp(1rem, 1.1vw, 1.1rem);
+        max-width: 58ch;
+      }
+      .head {
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+        margin-bottom: clamp(32px, 4vw, 56px);
+      }
+      .head.center {
+        align-items: center;
+        text-align: center;
+      }
+      .head.center .lead {
+        margin-inline: auto;
+      }
+
+      /* buttons */
+      .btn {
+        --btn-bg: var(--accent);
+        --btn-fg: #fff;
+        --btn-bd: var(--accent);
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.6rem;
+        padding: 0.95rem 1.6rem;
+        border-radius: 999px;
+        border: 1.5px solid var(--btn-bd);
+        background: var(--btn-bg);
+        color: var(--btn-fg);
+        font-weight: 700;
+        font-size: 0.95rem;
+        letter-spacing: 0.01em;
+        cursor: pointer;
+        transition:
+          transform 0.18s cubic-bezier(0.2, 0.8, 0.3, 1),
+          box-shadow 0.18s,
+          background 0.18s,
+          color 0.18s,
+          border-color 0.18s;
+        box-shadow: var(--shadow-sm);
+        white-space: nowrap;
+      }
+      .btn:hover {
+        transform: translateY(-2px);
+        box-shadow: var(--shadow-md);
+      }
+      .btn:active {
+        transform: translateY(0);
+      }
+      .btn--ghost {
+        --btn-bg: transparent;
+        --btn-fg: var(--text);
+        --btn-bd: var(--border);
+      }
+      .btn--ghost:hover {
+        --btn-bd: var(--accent);
+        --btn-fg: var(--accent-ink);
+      }
+      .btn--light {
+        --btn-bg: rgba(255, 255, 255, 0.1);
+        --btn-fg: #fff;
+        --btn-bd: rgba(255, 255, 255, 0.45);
+      }
+      .btn--light:hover {
+        --btn-bg: #fff;
+        --btn-fg: #1d1611;
+        --btn-bd: #fff;
+      }
+      .btn--sm {
+        padding: 0.65rem 1.15rem;
+        font-size: 0.85rem;
+      }
+      .btn--block {
+        width: 100%;
+      }
+
+      .chip {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.4rem;
+        padding: 0.3rem 0.7rem;
+        border-radius: 999px;
+        background: var(--accent-soft);
+        color: var(--accent-ink);
+        font-size: 0.7rem;
+        font-weight: 800;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+      .chip--green {
+        background: color-mix(in srgb, var(--forest) 16%, transparent);
+        color: var(--forest);
+      }
+
+      /* reveal */
+      .reveal {
+        opacity: 0;
+        transform: translateY(22px);
+        transition:
+          opacity 0.7s ease,
+          transform 0.7s cubic-bezier(0.2, 0.8, 0.3, 1);
+      }
+      .reveal.in {
+        opacity: 1;
+        transform: none;
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .reveal {
+          opacity: 1;
+          transform: none;
+          transition: none;
+        }
+      }
+
+      /* image fallback when a remote photo fails */
+      .ph {
+        background: linear-gradient(
+          135deg,
+          var(--accent-soft),
+          var(--bg-soft) 60%,
+          var(--surface)
+        );
+        position: relative;
+      }
+      img.failed {
+        visibility: hidden;
+      }
+
+      /* ============================================================
+   HEADER
+   ============================================================ */
+      .topbar {
+        background: var(--text);
+        color: var(--bg);
+        font-size: 0.78rem;
+        letter-spacing: 0.04em;
+      }
+      .topbar .wrap {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        min-height: 38px;
+        padding-block: 7px;
+      }
+      .topbar b {
+        font-weight: 700;
+      }
+      .topbar .t-right {
+        display: flex;
+        gap: 18px;
+        align-items: center;
+      }
+      @media (max-width: 720px) {
+        .topbar .t-hide {
+          display: none;
+        }
+        .topbar .wrap {
+          justify-content: center;
+        }
+      }
+
+      .nav {
+        position: sticky;
+        top: 0;
+        z-index: 60;
+        background: color-mix(in srgb, var(--bg) 82%, transparent);
+        backdrop-filter: blur(14px) saturate(140%);
+        border-bottom: 1px solid transparent;
+        transition:
+          border-color 0.3s,
+          background 0.3s,
+          box-shadow 0.3s;
+      }
+      .nav.stuck {
+        border-bottom-color: var(--border);
+        box-shadow: var(--shadow-sm);
+      }
+      .nav .wrap {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        min-height: var(--nav-h);
+      }
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-family: var(--font-display);
+        font-weight: 700;
+        font-size: 1.3rem;
+        letter-spacing: -0.01em;
+      }
+      .brand svg {
+        width: 34px;
+        height: 34px;
+        flex: none;
+      }
+      .brand small {
+        display: block;
+        font-family: var(--font-body);
+        font-size: 0.58rem;
+        font-weight: 700;
+        letter-spacing: 0.3em;
+        text-transform: uppercase;
+        color: var(--muted);
+        margin-top: -2px;
+      }
+
+      .menu {
+        display: flex;
+        align-items: center;
+        gap: 4px;
+        margin-left: auto;
+      }
+      .menu a {
+        position: relative;
+        padding: 0.55rem 0.8rem;
+        border-radius: 999px;
+        font-size: 0.92rem;
+        font-weight: 600;
+        color: var(--muted);
+        transition:
+          color 0.2s,
+          background 0.2s;
+      }
+      .menu a:hover {
+        color: var(--text);
+        background: var(--bg-soft);
+      }
+      .menu a.active {
+        color: var(--accent-ink);
+      }
+      .menu a.active::after {
+        content: "";
+        position: absolute;
+        left: 50%;
+        bottom: 2px;
+        translate: -50% 0;
+        width: 18px;
+        height: 2px;
+        border-radius: 2px;
+        background: var(--accent);
+      }
+      .nav-actions {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-left: 8px;
+      }
+
+      .icon-btn {
+        width: 42px;
+        height: 42px;
+        display: grid;
+        place-items: center;
+        flex: none;
+        border-radius: 50%;
+        border: 1.5px solid var(--border);
+        background: var(--surface);
+        cursor: pointer;
+        transition:
+          border-color 0.2s,
+          transform 0.2s,
+          background 0.2s;
+      }
+      .icon-btn:hover {
+        border-color: var(--accent);
+        transform: translateY(-1px);
+      }
+      .icon-btn svg {
+        width: 19px;
+        height: 19px;
+        stroke: currentColor;
+        fill: none;
+        stroke-width: 1.8;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+      :root[data-theme="dark"] .sun,
+      .sun {
+        display: none;
+      }
+      .moon {
+        display: block;
+      }
+      :root[data-theme="dark"] .moon {
+        display: none;
+      }
+      :root[data-theme="dark"] .sun {
+        display: block;
+      }
+      @media (prefers-color-scheme: dark) {
+        :root:not([data-theme="light"]) .moon {
+          display: none;
+        }
+        :root:not([data-theme="light"]) .sun {
+          display: block;
+        }
+      }
+
+      .burger {
+        display: none;
+      }
+      @media (max-width: 980px) {
+        .menu {
+          display: none;
+        }
+        .burger {
+          display: grid;
+        }
+        .nav-cta {
+          display: none;
+        }
+      }
+
+      /* mobile drawer */
+      .drawer {
+        position: fixed;
+        inset: 0;
+        z-index: 90;
+        display: grid;
+        grid-template-columns: 1fr min(86vw, 360px);
+        visibility: hidden;
+        pointer-events: none;
+      }
+      .drawer.open {
+        visibility: visible;
+        pointer-events: auto;
+      }
+      .drawer__scrim {
+        background: rgba(10, 7, 5, 0.5);
+        opacity: 0;
+        transition: opacity 0.3s;
+      }
+      .drawer.open .drawer__scrim {
+        opacity: 1;
+      }
+      .drawer__panel {
+        background: var(--surface);
+        border-left: 1px solid var(--border);
+        padding: 22px var(--gutter) 32px;
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+        translate: 100% 0;
+        transition: translate 0.36s cubic-bezier(0.2, 0.8, 0.3, 1);
+        overflow-y: auto;
+        box-shadow: var(--shadow-lg);
+      }
+      .drawer.open .drawer__panel {
+        translate: 0 0;
+      }
+      .drawer__top {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 14px;
+      }
+      .drawer__panel a.d-link {
+        padding: 0.9rem 0.2rem;
+        border-bottom: 1px solid var(--border);
+        font-family: var(--font-display);
+        font-size: 1.3rem;
+        font-weight: 600;
+      }
+      .drawer__panel .d-foot {
+        margin-top: auto;
+        padding-top: 24px;
+        display: grid;
+        gap: 12px;
+      }
+
+      /* ============================================================
+   HERO
+   ============================================================ */
+      .hero {
+        position: relative;
+        isolation: isolate;
+        overflow: hidden;
+        background: #17110c;
+        color: #fff;
+      }
+      .hero__media {
+        position: absolute;
+        inset: 0;
+        z-index: -2;
+      }
+      .hero__media img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        opacity: 0.55;
+      }
+      .hero::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        z-index: -1;
+        background:
+          radial-gradient(
+            90% 70% at 15% 20%,
+            rgba(23, 17, 12, 0.72),
+            transparent 70%
+          ),
+          linear-gradient(
+            to top,
+            rgba(14, 10, 7, 0.94) 6%,
+            rgba(14, 10, 7, 0.35) 55%,
+            rgba(14, 10, 7, 0.6) 100%
+          );
+      }
+      .hero .wrap {
+        position: relative;
+        padding-block: clamp(72px, 13vw, 150px);
+        display: grid;
+        gap: clamp(40px, 5vw, 64px);
+      }
+      .hero__inner {
+        max-width: 760px;
+        display: flex;
+        flex-direction: column;
+        gap: 22px;
+      }
+      .hero .eyebrow {
+        color: #f0bd85;
+      }
+      .hero h1 {
+        color: #fff;
+        text-wrap: balance;
+      }
+      .hero h1 em {
+        font-style: italic;
+        color: #f2b574;
+      }
+      .hero__sub {
+        color: rgba(255, 255, 255, 0.78);
+        font-size: clamp(1rem, 1.3vw, 1.18rem);
+        max-width: 52ch;
+      }
+      .hero__cta {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-top: 6px;
+      }
+      .hero__rating {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        flex-wrap: wrap;
+        color: rgba(255, 255, 255, 0.82);
+        font-size: 0.9rem;
+      }
+      .stars {
+        display: inline-flex;
+        gap: 2px;
+        color: #f5b94c;
+      }
+      .stars svg {
+        width: 16px;
+        height: 16px;
+        fill: currentColor;
+      }
+      .avatars {
+        display: flex;
+      }
+      .avatars span {
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        border: 2px solid rgba(255, 255, 255, 0.8);
+        margin-left: -10px;
+        background-size: cover;
+        background-position: center;
+        background-color: var(--accent);
+        display: grid;
+        place-items: center;
+        font-size: 0.7rem;
+        font-weight: 800;
+        color: #fff;
+      }
+      .avatars span:first-child {
+        margin-left: 0;
+      }
+
+      .hero__cards {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 1px;
+        background: rgba(255, 255, 255, 0.14);
+        border: 1px solid rgba(255, 255, 255, 0.14);
+        border-radius: var(--radius);
+        overflow: hidden;
+        backdrop-filter: blur(6px);
+      }
+      .hero__cards div {
+        padding: 20px 22px;
+        background: rgba(18, 13, 9, 0.42);
+      }
+      .hero__cards strong {
+        display: block;
+        font-family: var(--font-display);
+        font-size: 1.5rem;
+        color: #fff;
+      }
+      .hero__cards span {
+        font-size: 0.84rem;
+        color: rgba(255, 255, 255, 0.7);
+      }
+
+      .marquee {
+        background: var(--accent);
+        color: #fff;
+        overflow: hidden;
+        white-space: nowrap;
+        border-block: 1px solid color-mix(in srgb, var(--accent) 70%, #000);
+      }
+      .marquee__track {
+        display: inline-flex;
+        gap: 0;
+        animation: slide 28s linear infinite;
+        will-change: transform;
+      }
+      .marquee:hover .marquee__track {
+        animation-play-state: paused;
+      }
+      .marquee span {
+        display: inline-flex;
+        align-items: center;
+        gap: 18px;
+        padding: 12px 18px;
+        font-size: 0.82rem;
+        font-weight: 700;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+      }
+      .marquee span::after {
+        content: "✳";
+        opacity: 0.7;
+      }
+      @keyframes slide {
+        to {
+          transform: translateX(-50%);
+        }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .marquee__track {
+          animation: none;
+        }
+      }
+
+      /* ============================================================
+   ABOUT
+   ============================================================ */
+      .about {
+        display: grid;
+        grid-template-columns: 1.05fr 0.95fr;
+        gap: clamp(32px, 5vw, 72px);
+        align-items: center;
+      }
+      @media (max-width: 900px) {
+        .about {
+          grid-template-columns: 1fr;
+        }
+      }
+      .about__collage {
+        position: relative;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 170px 150px;
+        gap: 14px;
+      }
+      .about__collage figure {
+        margin: 0;
+        border-radius: var(--radius);
+        overflow: hidden;
+        box-shadow: var(--shadow-md);
+      }
+      .about__collage img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      .about__collage figure:first-child {
+        grid-row: span 2;
+        border-radius: var(--radius-lg);
+      }
+      .badge-float {
+        position: absolute;
+        right: -6px;
+        bottom: -22px;
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        padding: 14px 18px;
+        box-shadow: var(--shadow-lg);
+        display: flex;
+        gap: 12px;
+        align-items: center;
+      }
+      .badge-float b {
+        font-family: var(--font-display);
+        font-size: 1.6rem;
+        line-height: 1;
+        color: var(--accent-ink);
+      }
+      .badge-float span {
+        font-size: 0.78rem;
+        color: var(--muted);
+        line-height: 1.3;
+      }
+      .features {
+        display: grid;
+        gap: 18px;
+        margin-top: 26px;
+      }
+      .feature {
+        display: flex;
+        gap: 14px;
+        align-items: flex-start;
+      }
+      .feature .ic {
+        width: 44px;
+        height: 44px;
+        flex: none;
+        border-radius: 13px;
+        display: grid;
+        place-items: center;
+        background: var(--accent-soft);
+        color: var(--accent-ink);
+      }
+      .feature .ic svg {
+        width: 21px;
+        height: 21px;
+        stroke: currentColor;
+        fill: none;
+        stroke-width: 1.8;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+      .feature h4 {
+        font-family: var(--font-body);
+        font-size: 1rem;
+        font-weight: 800;
+        margin-bottom: 3px;
+      }
+      .feature p {
+        font-size: 0.92rem;
+        color: var(--muted);
+      }
+
+      /* ============================================================
+   MENU
+   ============================================================ */
+      .menu-section {
+        background: var(--bg-soft);
+      }
+      .tabs {
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+        justify-content: center;
+        margin-bottom: clamp(28px, 3.5vw, 42px);
+      }
+      .tab {
+        padding: 0.6rem 1.15rem;
+        border-radius: 999px;
+        border: 1.5px solid var(--border);
+        background: var(--surface);
+        color: var(--muted);
+        font-size: 0.9rem;
+        font-weight: 700;
+        cursor: pointer;
+        transition: all 0.2s;
+      }
+      .tab:hover {
+        color: var(--text);
+        border-color: var(--accent);
+      }
+      .tab[aria-selected="true"] {
+        background: var(--text);
+        border-color: var(--text);
+        color: var(--bg);
+      }
+
+      .menu-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: clamp(14px, 1.6vw, 22px);
+      }
+      .dish {
+        display: flex;
+        gap: 16px;
+        align-items: center;
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        padding: 14px;
+        transition:
+          transform 0.2s,
+          box-shadow 0.2s,
+          border-color 0.2s;
+      }
+      .dish:hover {
+        transform: translateY(-3px);
+        box-shadow: var(--shadow-md);
+        border-color: color-mix(in srgb, var(--accent) 45%, var(--border));
+      }
+      .dish__img {
+        width: 86px;
+        height: 86px;
+        flex: none;
+        border-radius: 14px;
+        overflow: hidden;
+      }
+      .dish__img img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      .dish__body {
+        min-width: 0;
+        flex: 1;
+      }
+      .dish__row {
+        display: flex;
+        align-items: baseline;
+        gap: 10px;
+      }
+      .dish__name {
+        font-family: var(--font-body);
+        font-size: 1rem;
+        font-weight: 800;
+        letter-spacing: -0.01em;
+      }
+      .dish__dots {
+        flex: 1;
+        border-bottom: 1.5px dotted var(--border);
+        translate: 0 -4px;
+      }
+      .dish__price {
+        font-weight: 800;
+        color: var(--accent-ink);
+        white-space: nowrap;
+        font-size: 0.98rem;
+      }
+      .dish__desc {
+        font-size: 0.85rem;
+        color: var(--muted);
+        margin-top: 4px;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+      }
+      .dish__tags {
+        display: flex;
+        gap: 6px;
+        margin-top: 8px;
+        flex-wrap: wrap;
+      }
+      .menu-note {
+        margin-top: clamp(28px, 3vw, 40px);
+        display: flex;
+        flex-wrap: wrap;
+        gap: 16px;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+      }
+
+      /* ============================================================
+   SPECIALS
+   ============================================================ */
+      .specials {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: clamp(16px, 2vw, 26px);
+      }
+      .special {
+        position: relative;
+        border-radius: var(--radius-lg);
+        overflow: hidden;
+        min-height: 380px;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        padding: 26px;
+        color: #fff;
+        isolation: isolate;
+      }
+      .special img {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        z-index: -2;
+        transition: transform 0.7s cubic-bezier(0.2, 0.8, 0.3, 1);
+      }
+      .special::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        z-index: -1;
+        background: linear-gradient(
+          to top,
+          rgba(12, 8, 5, 0.92),
+          rgba(12, 8, 5, 0.25) 55%,
+          rgba(12, 8, 5, 0.1)
+        );
+      }
+      .special:hover img {
+        transform: scale(1.07);
+      }
+      .special h3 {
+        color: #fff;
+        font-size: 1.5rem;
+        margin-bottom: 6px;
+      }
+      .special p {
+        color: rgba(255, 255, 255, 0.78);
+        font-size: 0.9rem;
+      }
+      .special .chip {
+        position: absolute;
+        top: 22px;
+        left: 22px;
+        background: #fff;
+        color: #1d1611;
+      }
+      .special__price {
+        margin-top: 14px;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        font-family: var(--font-display);
+        font-size: 1.5rem;
+      }
+      .special__price del {
+        font-family: var(--font-body);
+        font-size: 0.95rem;
+        opacity: 0.6;
+      }
+
+      /* ============================================================
+   STATS
+   ============================================================ */
+      .stats {
+        background: var(--text);
+        color: var(--bg);
+      }
+      .stats .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+        gap: clamp(24px, 3vw, 40px);
+        text-align: center;
+      }
+      .stat b {
+        display: block;
+        font-family: var(--font-display);
+        font-size: clamp(2.2rem, 4.5vw, 3.4rem);
+        line-height: 1;
+        color: #f2b574;
+      }
+      .stat span {
+        font-size: 0.86rem;
+        opacity: 0.72;
+        letter-spacing: 0.04em;
+      }
+
+      /* ============================================================
+   GALLERY
+   ============================================================ */
+      .gallery {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 12px;
+      }
+      .gallery button {
+        position: relative;
+        border: 0;
+        padding: 0;
+        cursor: zoom-in;
+        overflow: hidden;
+        border-radius: var(--radius);
+        background: var(--bg-soft);
+        aspect-ratio: 1/1;
+      }
+      .gallery button:nth-child(1),
+      .gallery button:nth-child(6) {
+        grid-row: span 2;
+        aspect-ratio: 1/2.07;
+      }
+      .gallery img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition:
+          transform 0.6s cubic-bezier(0.2, 0.8, 0.3, 1),
+          filter 0.3s;
+      }
+      .gallery button:hover img {
+        transform: scale(1.08);
+      }
+      @media (max-width: 860px) {
+        .gallery {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .gallery button:nth-child(1),
+        .gallery button:nth-child(6) {
+          grid-row: span 1;
+          aspect-ratio: 1/1;
+        }
+      }
+
+      .lightbox {
+        position: fixed;
+        inset: 0;
+        z-index: 120;
+        display: grid;
+        place-items: center;
+        background: rgba(8, 5, 3, 0.92);
+        padding: 20px;
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.25s;
+      }
+      .lightbox.open {
+        opacity: 1;
+        visibility: visible;
+      }
+      .lightbox img {
+        max-width: min(1000px, 92vw);
+        max-height: 84vh;
+        border-radius: var(--radius);
+        box-shadow: var(--shadow-lg);
+      }
+      .lightbox__close {
+        position: absolute;
+        top: 18px;
+        right: 18px;
+        color: #fff;
+        border-color: rgba(255, 255, 255, 0.4);
+        background: rgba(255, 255, 255, 0.08);
+      }
+      .lightbox__nav {
+        position: absolute;
+        top: 50%;
+        translate: 0 -50%;
+        color: #fff;
+        border-color: rgba(255, 255, 255, 0.4);
+        background: rgba(255, 255, 255, 0.08);
+      }
+      .lightbox__nav.prev {
+        left: 14px;
+      }
+      .lightbox__nav.next {
+        right: 14px;
+      }
+
+      /* ============================================================
+   TESTIMONIALS
+   ============================================================ */
+      .reviews {
+        background: var(--bg-soft);
+        overflow: hidden;
+      }
+      .slider {
+        position: relative;
+      }
+      .slides {
+        display: flex;
+        transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.3, 1);
+      }
+      .slide {
+        flex: 0 0 100%;
+        padding: 4px;
+      }
+      @media (min-width: 860px) {
+        .slide {
+          flex: 0 0 50%;
+        }
+      }
+      .review {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: var(--radius-lg);
+        padding: clamp(22px, 3vw, 34px);
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        box-shadow: var(--shadow-sm);
+      }
+      .review p {
+        font-family: var(--font-display);
+        font-size: clamp(1.05rem, 1.4vw, 1.25rem);
+        line-height: 1.5;
+        font-style: italic;
+      }
+      .review__who {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin-top: auto;
+      }
+      .review__who .av {
+        width: 46px;
+        height: 46px;
+        border-radius: 50%;
+        background: var(--accent-soft);
+        color: var(--accent-ink);
+        display: grid;
+        place-items: center;
+        font-weight: 800;
+        flex: none;
+      }
+      .review__who b {
+        display: block;
+        font-size: 0.95rem;
+      }
+      .review__who span {
+        font-size: 0.8rem;
+        color: var(--muted);
+      }
+      .slider__ctrl {
+        display: flex;
+        gap: 10px;
+        justify-content: center;
+        margin-top: 28px;
+        align-items: center;
+      }
+      .dots {
+        display: flex;
+        gap: 7px;
+        margin-inline: 8px;
+      }
+      .dots button {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        border: 0;
+        background: var(--border);
+        cursor: pointer;
+        padding: 0;
+        transition: all 0.25s;
+      }
+      .dots button[aria-current="true"] {
+        background: var(--accent);
+        width: 24px;
+        border-radius: 4px;
+      }
+
+      /* ============================================================
+   RESERVATION
+   ============================================================ */
+      .reserve {
+        display: grid;
+        grid-template-columns: 0.95fr 1.05fr;
+        gap: clamp(28px, 4vw, 60px);
+        align-items: start;
+      }
+      @media (max-width: 920px) {
+        .reserve {
+          grid-template-columns: 1fr;
+        }
+      }
+      .reserve__card {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: var(--radius-lg);
+        padding: clamp(22px, 3vw, 36px);
+        box-shadow: var(--shadow-md);
+      }
+      .form-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
+      }
+      @media (max-width: 560px) {
+        .form-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+      .field {
+        display: flex;
+        flex-direction: column;
+        gap: 7px;
+      }
+      .field--full {
+        grid-column: 1/-1;
+      }
+      .field label {
+        font-size: 0.82rem;
+        font-weight: 700;
+        letter-spacing: 0.02em;
+      }
+      .field input,
+      .field select,
+      .field textarea {
+        width: 100%;
+        padding: 0.85rem 1rem;
+        border-radius: var(--radius-sm);
+        border: 1.5px solid var(--border);
+        background: var(--surface-2);
+        transition:
+          border-color 0.2s,
+          box-shadow 0.2s;
+      }
+      .field textarea {
+        resize: vertical;
+        min-height: 96px;
+      }
+      .field input:focus,
+      .field select:focus,
+      .field textarea:focus {
+        outline: none;
+        border-color: var(--accent);
+        box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent) 16%, transparent);
+      }
+      .field .err {
+        font-size: 0.76rem;
+        color: #c0392b;
+        min-height: 1em;
+      }
+      :root[data-theme="dark"] .field .err {
+        color: #ff8b7a;
+      }
+      .field.invalid input,
+      .field.invalid select {
+        border-color: #c0392b;
+      }
+      .form-foot {
+        grid-column: 1/-1;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 14px;
+        align-items: center;
+        justify-content: space-between;
+        margin-top: 4px;
+      }
+      .form-msg {
+        grid-column: 1/-1;
+        display: none;
+        gap: 10px;
+        align-items: center;
+        padding: 14px 16px;
+        border-radius: var(--radius-sm);
+        background: color-mix(in srgb, var(--forest) 14%, transparent);
+        color: var(--forest);
+        font-size: 0.9rem;
+        font-weight: 600;
+        border: 1px solid color-mix(in srgb, var(--forest) 35%, transparent);
+      }
+      .form-msg.show {
+        display: flex;
+      }
+      .hours {
+        display: grid;
+        gap: 2px;
+        margin-top: 22px;
+      }
+      .hours li {
+        display: flex;
+        justify-content: space-between;
+        gap: 12px;
+        padding: 0.6rem 0;
+        border-bottom: 1px dashed var(--border);
+        font-size: 0.92rem;
+        list-style: none;
+      }
+      .hours li:last-child {
+        border-bottom: 0;
+      }
+      .hours li b {
+        font-weight: 700;
+      }
+      .hours ul {
+        padding: 0;
+        margin: 0;
+      }
+      .info-list {
+        list-style: none;
+        padding: 0;
+        margin: 22px 0 0;
+        display: grid;
+        gap: 14px;
+      }
+      .info-list li {
+        display: flex;
+        gap: 12px;
+        align-items: flex-start;
+        font-size: 0.95rem;
+      }
+      .info-list svg {
+        width: 20px;
+        height: 20px;
+        flex: none;
+        margin-top: 2px;
+        stroke: var(--accent-ink);
+        fill: none;
+        stroke-width: 1.8;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+
+      /* ============================================================
+   CTA + MAP + FOOTER
+   ============================================================ */
+      .cta {
+        position: relative;
+        overflow: hidden;
+        color: #fff;
+        background: #17110c;
+        text-align: center;
+      }
+      .cta img {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        opacity: 0.4;
+        z-index: 0;
+      }
+      .cta::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          to right,
+          rgba(14, 10, 7, 0.9),
+          rgba(14, 10, 7, 0.55)
+        );
+        z-index: 1;
+      }
+      .cta .wrap {
+        position: relative;
+        z-index: 2;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+      }
+      .cta h2 {
+        color: #fff;
+        max-width: 20ch;
+      }
+
+      .map {
+        height: clamp(280px, 34vw, 420px);
+        width: 100%;
+        border: 0;
+        filter: saturate(0.85);
+      }
+      :root[data-theme="dark"] .map {
+        filter: invert(0.9) hue-rotate(180deg) saturate(0.7);
+      }
+
+      footer {
+        background: var(--text);
+        color: var(--bg);
+        padding-top: clamp(48px, 6vw, 80px);
+      }
+      .f-grid {
+        display: grid;
+        grid-template-columns: 1.4fr 1fr 1fr 1.2fr;
+        gap: clamp(24px, 3vw, 48px);
+      }
+      @media (max-width: 900px) {
+        .f-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+      @media (max-width: 560px) {
+        .f-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+      footer h4 {
+        font-family: var(--font-body);
+        font-size: 0.78rem;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        opacity: 0.6;
+        margin-bottom: 16px;
+      }
+      footer ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: grid;
+        gap: 10px;
+        font-size: 0.93rem;
+      }
+      footer a {
+        opacity: 0.82;
+        transition:
+          opacity 0.2s,
+          color 0.2s;
+      }
+      footer a:hover {
+        opacity: 1;
+        color: #f2b574;
+      }
+      footer .brand {
+        color: var(--bg);
+      }
+      footer .brand small {
+        color: rgba(255, 255, 255, 0.45);
+      }
+      .f-about {
+        font-size: 0.92rem;
+        opacity: 0.7;
+        margin-top: 14px;
+        max-width: 34ch;
+      }
+      .socials {
+        display: flex;
+        gap: 10px;
+        margin-top: 18px;
+      }
+      .socials a {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        border: 1px solid rgba(255, 255, 255, 0.22);
+        display: grid;
+        place-items: center;
+        opacity: 1;
+      }
+      .socials a:hover {
+        background: var(--accent);
+        border-color: var(--accent);
+      }
+      .socials svg {
+        width: 18px;
+        height: 18px;
+        stroke: currentColor;
+        fill: none;
+        stroke-width: 1.7;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+      .f-bottom {
+        margin-top: clamp(36px, 4vw, 56px);
+        border-top: 1px solid rgba(255, 255, 255, 0.14);
+        padding-block: 22px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        justify-content: space-between;
+        font-size: 0.82rem;
+        opacity: 0.6;
+      }
+      .subscribe {
+        display: flex;
+        gap: 8px;
+        margin-top: 14px;
+      }
+      .subscribe input {
+        flex: 1;
+        min-width: 0;
+        padding: 0.75rem 0.95rem;
+        border-radius: 999px;
+        border: 1px solid rgba(255, 255, 255, 0.22);
+        background: rgba(255, 255, 255, 0.07);
+        color: var(--bg);
+      }
+      .subscribe input::placeholder {
+        color: rgba(255, 255, 255, 0.45);
+      }
+      .subscribe input:focus {
+        outline: none;
+        border-color: #f2b574;
+      }
+
+      /* floating actions */
+      .to-top {
+        position: fixed;
+        right: 18px;
+        bottom: 18px;
+        z-index: 70;
+        background: var(--text);
+        color: var(--bg);
+        border-color: var(--text);
+        opacity: 0;
+        translate: 0 16px;
+        pointer-events: none;
+        transition:
+          opacity 0.3s,
+          translate 0.3s;
+      }
+      .to-top.show {
+        opacity: 1;
+        translate: 0 0;
+        pointer-events: auto;
+      }
+      .call-fab {
+        position: fixed;
+        left: 18px;
+        bottom: 18px;
+        z-index: 70;
+        display: none;
+        background: var(--accent);
+        color: #fff;
+        border-color: var(--accent);
+      }
+      @media (max-width: 980px) {
+        .call-fab {
+          display: grid;
+        }
+      }
+      @media print {
+        .nav,
+        .drawer,
+        .to-top,
+        .call-fab,
+        .marquee {
+          display: none !important;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <a href="#menyu" class="sr-only">Menyuga o'tish</a>
+
+    <!-- ======================= TOPBAR ======================= -->
+    <div class="topbar">
+      <div class="wrap">
+        <span class="t-hide">📍 Toshkent, Amir Temur shoh ko'chasi 108</span>
+        <div class="t-right">
+          <span>☕ Har kuni <b>08:00 — 23:00</b></span>
+          <a class="t-hide" href="tel:+998712007070"
+            ><b>+998 71 200 70 70</b></a
+          >
+        </div>
+      </div>
+    </div>
+
+    <!-- ======================= NAV ======================= -->
+    <header class="nav" id="nav">
+      <div class="wrap">
+        <a href="#top" class="brand" aria-label="MEZZO bosh sahifa">
+          <svg viewBox="0 0 100 100" aria-hidden="true">
+            <rect
+              width="100"
+              height="100"
+              rx="24"
+              fill="currentColor"
+              opacity=".1"
+            />
+            <path
+              d="M28 30h36a14 14 0 0 1 0 28h-4v4a12 12 0 0 1-12 12H40a12 12 0 0 1-12-12V30zm36 8v12a6 6 0 0 0 0-12z"
+              fill="currentColor"
+            />
+          </svg>
+          <span>MEZZO<small>coffee &amp; kitchen</small></span>
+        </a>
+
+        <nav class="menu" id="primary-menu" aria-label="Asosiy menyu">
+          <a href="#haqida">Biz haqimizda</a>
+          <a href="#menyu">Menyu</a>
+          <a href="#tanlangan">Takliflar</a>
+          <a href="#galereya">Galereya</a>
+          <a href="#fikrlar">Fikrlar</a>
+          <a href="#aloqa">Aloqa</a>
+        </nav>
+
+        <div class="nav-actions">
+          <button
+            class="icon-btn"
+            id="theme-btn"
+            type="button"
+            aria-label="Mavzuni almashtirish"
+          >
+            <svg class="moon" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z" />
+            </svg>
+            <svg class="sun" viewBox="0 0 24 24" aria-hidden="true">
+              <circle cx="12" cy="12" r="4.2" />
+              <path
+                d="M12 2v2m0 16v2M2 12h2m16 0h2M4.9 4.9l1.4 1.4m11.4 11.4l1.4 1.4M19.1 4.9l-1.4 1.4M6.3 17.7l-1.4 1.4"
+              />
+            </svg>
+          </button>
+          <a href="#band" class="btn btn--sm nav-cta">Stol band qilish</a>
+          <button
+            class="icon-btn burger"
+            id="burger"
+            type="button"
+            aria-label="Menyuni ochish"
+            aria-expanded="false"
+            aria-controls="drawer"
+          >
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M3 6h18M3 12h18M3 18h18" />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- ======================= DRAWER ======================= -->
+    <div
+      class="drawer"
+      id="drawer"
+      role="dialog"
+      aria-modal="true"
+      aria-label="Mobil menyu"
+    >
+      <div class="drawer__scrim" data-close></div>
+      <div class="drawer__panel">
+        <div class="drawer__top">
+          <span class="brand" style="font-size: 1.1rem">MEZZO</span>
+          <button class="icon-btn" type="button" data-close aria-label="Yopish">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M18 6L6 18M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
+        <a class="d-link" href="#haqida">Biz haqimizda</a>
+        <a class="d-link" href="#menyu">Menyu</a>
+        <a class="d-link" href="#tanlangan">Takliflar</a>
+        <a class="d-link" href="#galereya">Galereya</a>
+        <a class="d-link" href="#fikrlar">Fikrlar</a>
+        <a class="d-link" href="#aloqa">Aloqa</a>
+        <div class="d-foot">
+          <a href="#band" class="btn btn--block">Stol band qilish</a>
+          <a href="tel:+998712007070" class="btn btn--ghost btn--block"
+            >+998 71 200 70 70</a
+          >
+          <p class="muted" style="font-size: 0.82rem">
+            Amir Temur shoh ko'chasi 108, Toshkent
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <main id="top">
+      <!-- ======================= HERO ======================= -->
+      <section class="hero">
+        <div class="hero__media ph">
+          <img
+            src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=1920&q=70"
+            alt="MEZZO kafesining ichki ko'rinishi"
+            fetchpriority="high"
+          />
+        </div>
+        <div class="wrap">
+          <div class="hero__inner">
+            <span class="eyebrow">Toshkent · 2016-yildan beri</span>
+            <h1>Kuningizni <em>mukammal</em> qahva bilan boshlang</h1>
+            <p class="hero__sub">
+              Har kuni o'zimiz qovuramiz, har kuni yangi pishiramiz. Mutaxassis
+              qahva, mavsumiy nonushta va kechgacha davom etadigan iliq muhit —
+              hammasi shahar markazida.
+            </p>
+            <div class="hero__cta">
+              <a href="#band" class="btn">Stol band qilish</a>
+              <a href="#menyu" class="btn btn--light">Menyuni ko'rish</a>
+            </div>
+            <div class="hero__rating">
+              <span class="stars" aria-hidden="true">
+                <svg viewBox="0 0 24 24">
+                  <path
+                    d="M12 2l3 6.6 7 .7-5.2 4.7 1.5 7L12 17.6 5.7 21l1.5-7L2 9.3l7-.7z"
+                  />
+                </svg>
+                <svg viewBox="0 0 24 24">
+                  <path
+                    d="M12 2l3 6.6 7 .7-5.2 4.7 1.5 7L12 17.6 5.7 21l1.5-7L2 9.3l7-.7z"
+                  />
+                </svg>
+                <svg viewBox="0 0 24 24">
+                  <path
+                    d="M12 2l3 6.6 7 .7-5.2 4.7 1.5 7L12 17.6 5.7 21l1.5-7L2 9.3l7-.7z"
+                  />
+                </svg>
+                <svg viewBox="0 0 24 24">
+                  <path
+                    d="M12 2l3 6.6 7 .7-5.2 4.7 1.5 7L12 17.6 5.7 21l1.5-7L2 9.3l7-.7z"
+                  />
+                </svg>
+                <svg viewBox="0 0 24 24">
+                  <path
+                    d="M12 2l3 6.6 7 .7-5.2 4.7 1.5 7L12 17.6 5.7 21l1.5-7L2 9.3l7-.7z"
+                  />
+                </svg>
+              </span>
+              <b>4.9</b>
+              <span>· 1 240+ mehmon bahosi</span>
+              <span class="avatars" aria-hidden="true"
+                ><span>A</span><span>D</span><span>S</span><span>+</span></span
+              >
+            </div>
+          </div>
+
+          <div class="hero__cards">
+            <div><strong>08:00</strong><span>Eshiklar ochiladi</span></div>
+            <div><strong>12 ta</strong><span>Single-origin qahva</span></div>
+            <div>
+              <strong>15 daq</strong><span>O'rtacha yetkazib berish</span>
+            </div>
+            <div><strong>90 o'rin</strong><span>Zal + terrassa</span></div>
+          </div>
+        </div>
+      </section>
+
+      <div class="marquee" aria-hidden="true">
+        <div class="marquee__track" id="marquee">
+          <span>Yangi qovurilgan don</span><span>Har kuni pishiriqlar</span
+          ><span>Vegan tanlovlar</span> <span>Terrassa ochiq</span
+          ><span>Wi-Fi &amp; ish joylari</span><span>Bellik tadbirlar</span>
+        </div>
+      </div>
+
+      <!-- ======================= ABOUT ======================= -->
+      <section class="section" id="haqida">
+        <div class="wrap about">
+          <div class="reveal">
+            <div class="head">
+              <span class="eyebrow">Biz haqimizda</span>
+              <h2>Kichik qovurxona, katta mehr</h2>
+              <p class="lead">
+                MEZZO 2016-yilda uchta do'stning kichik qovurxonasi sifatida
+                boshlangan. Bugun bizda o'z ustaxonamiz, kunlik nonvoyxona va
+                Toshkentning eng iliq terrassalaridan biri bor. Don yetkazib
+                beruvchilarimizni o'zimiz tanlaymiz — Efiopiya, Keniya va
+                Braziliya fermalaridan to'g'ridan-to'g'ri.
+              </p>
+            </div>
+            <div class="features">
+              <div class="feature">
+                <span class="ic"
+                  ><svg viewBox="0 0 24 24">
+                    <path
+                      d="M5 8h11a4 4 0 0 1 0 8h-1v1a4 4 0 0 1-4 4H9a4 4 0 0 1-4-4V8zM3 21h14"
+                    /></svg
+                ></span>
+                <div>
+                  <h4>O'z qovurxonamiz</h4>
+                  <p>
+                    Donlar har hafta kichik partiyalarda qovuriladi — shuning
+                    uchun fincondagi ta'm har doim yangi.
+                  </p>
+                </div>
+              </div>
+              <div class="feature">
+                <span class="ic"
+                  ><svg viewBox="0 0 24 24">
+                    <path d="M12 3v3m0 12v3M3 12h3m12 0h3" />
+                    <circle cx="12" cy="12" r="5" /></svg
+                ></span>
+                <div>
+                  <h4>Kunlik nonvoyxona</h4>
+                  <p>
+                    Kruassan, fokachcha va shirinliklar har kuni ertalab 05:30
+                    da oshxonamizda tayyorlanadi.
+                  </p>
+                </div>
+              </div>
+              <div class="feature">
+                <span class="ic"
+                  ><svg viewBox="0 0 24 24">
+                    <path d="M20 7l-8-4-8 4 8 4 8-4zM4 7v10l8 4 8-4V7" /></svg
+                ></span>
+                <div>
+                  <h4>Mavsumiy menyu</h4>
+                  <p>
+                    Menyu har 3 oyda yangilanadi: mahalliy fermerlar
+                    mahsulotlari va mavsumiy sabzavotlar.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="about__collage reveal">
+            <figure class="ph">
+              <img
+                src="https://images.unsplash.com/photo-1442512595331-e89e73853f31?auto=format&fit=crop&w=800&q=70"
+                alt="Barista qahva damlayapti"
+                loading="lazy"
+              />
+            </figure>
+            <figure class="ph">
+              <img
+                src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=700&q=70"
+                alt="Latte art bilan kapuchino"
+                loading="lazy"
+              />
+            </figure>
+            <figure class="ph">
+              <img
+                src="https://images.unsplash.com/photo-1533920379810-6bedac9e31f4?auto=format&fit=crop&w=700&q=70"
+                alt="Yangi pishirilgan kruassanlar"
+                loading="lazy"
+              />
+            </figure>
+            <div class="badge-float">
+              <b>9</b><span>yillik<br />tajriba</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ======================= MENU ======================= -->
+      <section class="section menu-section" id="menyu">
+        <div class="wrap">
+          <div class="head center reveal">
+            <span class="eyebrow">Menyu</span>
+            <h2>Nimani tanlaysiz?</h2>
+            <p class="lead">
+              Narxlar so'mda ko'rsatilgan. Barcha taomlar buyurtmadan keyin
+              tayyorlanadi — o'rtacha kutish vaqti 10–15 daqiqa.
+            </p>
+          </div>
+
+          <div
+            class="tabs reveal"
+            role="tablist"
+            aria-label="Menyu bo'limlari"
+            id="tabs"
+          ></div>
+          <div class="menu-grid" id="menu-grid" aria-live="polite"></div>
+
+          <div class="menu-note reveal">
+            <span class="chip chip--green">Vegan</span>
+            <span class="muted"
+              >belgisi o'simlik asosidagi taomlarni bildiradi.</span
+            >
+            <a href="#band" class="btn btn--ghost btn--sm">Stol band qilish</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- ======================= SPECIALS ======================= -->
+      <section class="section" id="tanlangan">
+        <div class="wrap">
+          <div class="head reveal">
+            <span class="eyebrow">Hafta takliflari</span>
+            <h2>Oshxonadan tanlanganlar</h2>
+            <p class="lead">
+              Har hafta oshpazimiz uchta taomni alohida tanlaydi. Taklif
+              yakshanba kuni tugaydi.
+            </p>
+          </div>
+          <div class="specials">
+            <article class="special reveal ph">
+              <img
+                src="https://images.unsplash.com/photo-1551963831-b3b1ca40c98e?auto=format&fit=crop&w=900&q=70"
+                alt="To'liq nonushta to'plami"
+                loading="lazy"
+              />
+              <span class="chip">Nonushta seti</span>
+              <h3>MEZZO Breakfast</h3>
+              <p>
+                Omlet, avokado tost, yangi kruassan va tanlovingiz bo'yicha
+                qahva. 10:00 gacha.
+              </p>
+              <div class="special__price">68 000 <del>86 000</del></div>
+            </article>
+            <article class="special reveal ph">
+              <img
+                src="https://images.unsplash.com/photo-1511920170033-f8396924c348?auto=format&fit=crop&w=900&q=70"
+                alt="Filtrlangan qahva"
+                loading="lazy"
+              />
+              <span class="chip">Barista tanlovi</span>
+              <h3>Efiopiya Guji V60</h3>
+              <p>
+                Shaftoli va qora choy notalari. Qo'lda damlanadi, 250 ml. Faqat
+                20 fincon kunda.
+              </p>
+              <div class="special__price">38 000 <del>45 000</del></div>
+            </article>
+            <article class="special reveal ph">
+              <img
+                src="https://images.unsplash.com/photo-1551024601-bec78aea704b?auto=format&fit=crop&w=900&q=70"
+                alt="Shirinlik to'plami"
+                loading="lazy"
+              />
+              <span class="chip">Shirinlik</span>
+              <h3>Desert duo + choy</h3>
+              <p>
+                Ikki xil shirinlik va damlama choy — ikki kishi uchun kechki
+                tanlov.
+              </p>
+              <div class="special__price">72 000 <del>90 000</del></div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- ======================= STATS ======================= -->
+      <section class="section stats">
+        <div class="wrap grid">
+          <div class="stat reveal">
+            <b data-count="9">0</b><span>Yil tajriba</span>
+          </div>
+          <div class="stat reveal">
+            <b data-count="142" data-suffix="+">0</b
+            ><span>Menyudagi pozitsiya</span>
+          </div>
+          <div class="stat reveal">
+            <b data-count="38" data-suffix="k+">0</b><span>Yillik mehmon</span>
+          </div>
+          <div class="stat reveal">
+            <b data-count="4.9" data-decimals="1">0</b
+            ><span>O'rtacha baho</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- ======================= GALLERY ======================= -->
+      <section class="section" id="galereya">
+        <div class="wrap">
+          <div class="head center reveal">
+            <span class="eyebrow">Galereya</span>
+            <h2>MEZZO ichida</h2>
+            <p class="lead">
+              Zal, terrassa va oshxonamizdan kadrlar. Rasmni bosib
+              kattalashtirishingiz mumkin.
+            </p>
+          </div>
+          <div class="gallery reveal" id="gallery"></div>
+        </div>
+      </section>
+
+      <div
+        class="lightbox"
+        id="lightbox"
+        role="dialog"
+        aria-modal="true"
+        aria-label="Rasm ko'rish"
+      >
+        <button
+          class="icon-btn lightbox__close"
+          type="button"
+          data-lb-close
+          aria-label="Yopish"
+        >
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M18 6L6 18M6 6l12 12" />
+          </svg>
+        </button>
+        <button
+          class="icon-btn lightbox__nav prev"
+          type="button"
+          data-lb-prev
+          aria-label="Oldingi rasm"
+        >
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M15 18l-6-6 6-6" />
+          </svg>
+        </button>
+        <img id="lb-img" src="" alt="" />
+        <button
+          class="icon-btn lightbox__nav next"
+          type="button"
+          data-lb-next
+          aria-label="Keyingi rasm"
+        >
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M9 6l6 6-6 6" />
+          </svg>
+        </button>
+      </div>
+
+      <!-- ======================= REVIEWS ======================= -->
+      <section class="section reviews" id="fikrlar">
+        <div class="wrap">
+          <div class="head center reveal">
+            <span class="eyebrow">Mehmonlar fikri</span>
+            <h2>Ular nima deydi</h2>
+          </div>
+          <div class="slider reveal">
+            <div class="slides" id="slides"></div>
+            <div class="slider__ctrl">
+              <button
+                class="icon-btn"
+                type="button"
+                id="rev-prev"
+                aria-label="Oldingi fikr"
+              >
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M15 18l-6-6 6-6" />
+                </svg>
+              </button>
+              <div class="dots" id="dots"></div>
+              <button
+                class="icon-btn"
+                type="button"
+                id="rev-next"
+                aria-label="Keyingi fikr"
+              >
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M9 6l6 6-6 6" />
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ======================= RESERVATION ======================= -->
+      <section class="section" id="band">
+        <div class="wrap reserve">
+          <div class="reveal">
+            <div class="head">
+              <span class="eyebrow">Band qilish</span>
+              <h2>Stolingizni oldindan oling</h2>
+              <p class="lead">
+                Juma va shanba kunlari zal odatda to'la bo'ladi — 1–2 kun oldin
+                band qilishni tavsiya qilamiz. 8 kishidan ko'p guruhlar uchun
+                telefon orqali murojaat qiling.
+              </p>
+            </div>
+
+            <div class="hours">
+              <ul>
+                <li><span>Dushanba — Payshanba</span><b>08:00 — 23:00</b></li>
+                <li><span>Juma — Shanba</span><b>08:00 — 01:00</b></li>
+                <li><span>Yakshanba</span><b>09:00 — 23:00</b></li>
+                <li><span>Nonushta menyusi</span><b>08:00 — 12:00</b></li>
+              </ul>
+            </div>
+
+            <ul class="info-list">
+              <li>
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 0 1 16 0z" />
+                  <circle cx="12" cy="10" r="2.6" />
+                </svg>
+                <span
+                  >Toshkent, Yunusobod tumani,<br />Amir Temur shoh ko'chasi
+                  108</span
+                >
+              </li>
+              <li>
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path
+                    d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.5 2.8.6a2 2 0 0 1 1.7 2.1z"
+                  />
+                </svg>
+                <span
+                  ><a href="tel:+998712007070">+998 71 200 70 70</a> ·
+                  <a href="tel:+998901234567">+998 90 123 45 67</a></span
+                >
+              </li>
+              <li>
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <rect x="2.5" y="4.5" width="19" height="15" rx="2.5" />
+                  <path d="M3 7l9 6 9-6" />
+                </svg>
+                <span><a href="mailto:salom@mezzo.uz">salom@mezzo.uz</a></span>
+              </li>
+            </ul>
+          </div>
+
+          <div class="reserve__card reveal">
+            <form class="form-grid" id="booking" novalidate>
+              <div class="field field--full">
+                <label for="b-name">Ism va familiya *</label>
+                <input
+                  id="b-name"
+                  name="name"
+                  type="text"
+                  placeholder="Masalan: Dilshod Karimov"
+                  autocomplete="name"
+                  required
+                  minlength="3"
+                />
+                <span class="err" data-err="name"></span>
+              </div>
+              <div class="field">
+                <label for="b-phone">Telefon raqam *</label>
+                <input
+                  id="b-phone"
+                  name="phone"
+                  type="tel"
+                  inputmode="tel"
+                  placeholder="+998 90 123 45 67"
+                  autocomplete="tel"
+                  required
+                />
+                <span class="err" data-err="phone"></span>
+              </div>
+              <div class="field">
+                <label for="b-guests">Mehmonlar soni *</label>
+                <select id="b-guests" name="guests" required>
+                  <option value="">Tanlang</option>
+                  <option>1 kishi</option>
+                  <option selected>2 kishi</option>
+                  <option>3 kishi</option>
+                  <option>4 kishi</option>
+                  <option>5 kishi</option>
+                  <option>6 kishi</option>
+                  <option>7 kishi</option>
+                  <option>8 kishi</option>
+                  <option>8+ (telefon orqali)</option>
+                </select>
+                <span class="err" data-err="guests"></span>
+              </div>
+              <div class="field">
+                <label for="b-date">Sana *</label>
+                <input id="b-date" name="date" type="date" required />
+                <span class="err" data-err="date"></span>
+              </div>
+              <div class="field">
+                <label for="b-time">Vaqt *</label>
+                <select id="b-time" name="time" required>
+                  <option value="">Tanlang</option>
+                </select>
+                <span class="err" data-err="time"></span>
+              </div>
+              <div class="field field--full">
+                <label for="b-note">Qo'shimcha izoh</label>
+                <textarea
+                  id="b-note"
+                  name="note"
+                  placeholder="Deraza yonidagi stol, tug'ilgan kun, bolalar kursisi..."
+                ></textarea>
+              </div>
+
+              <div class="form-msg" id="form-msg" role="status">
+                <svg
+                  viewBox="0 0 24 24"
+                  width="20"
+                  height="20"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  aria-hidden="true"
+                >
+                  <path d="M20 6L9 17l-5-5" />
+                </svg>
+                <span id="form-msg-text"></span>
+              </div>
+
+              <div class="form-foot">
+                <p class="muted" style="font-size: 0.8rem; max-width: 30ch">
+                  Tasdiqlash uchun 10 daqiqa ichida qo'ng'iroq qilamiz.
+                </p>
+                <button class="btn" type="submit" id="submit-btn">
+                  Bandlikni yuborish
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </section>
+
+      <!-- ======================= CTA ======================= -->
+      <section class="section cta">
+        <img
+          class="ph"
+          src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=1800&q=70"
+          alt=""
+          aria-hidden="true"
+          loading="lazy"
+        />
+        <div class="wrap">
+          <span class="eyebrow" style="color: #f0bd85">Tadbirlar</span>
+          <h2>Tug'ilgan kun yoki uchrashuvni biz uyushtiramiz</h2>
+          <p style="color: rgba(255, 255, 255, 0.78); max-width: 52ch">
+            Terrassani to'liq band qilish, korporativ nonushtalar va
+            degustatsiya kechalari — 30 kishigacha bo'lgan tadbirlar uchun menyu
+            va narxni birgalikda tuzamiz.
+          </p>
+          <div class="hero__cta" style="justify-content: center">
+            <a href="tel:+998712007070" class="btn">Qo'ng'iroq qilish</a>
+            <a
+              href="https://t.me/mezzo_cafe"
+              class="btn btn--light"
+              target="_blank"
+              rel="noopener"
+              >Telegram orqali yozish</a
+            >
+          </div>
+        </div>
+      </section>
+
+      <!-- ======================= MAP ======================= -->
+      <section id="aloqa" aria-label="Manzil xaritada">
+        <iframe
+          class="map"
+          title="MEZZO kafe manzili xaritada"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          src="https://www.openstreetmap.org/export/embed.html?bbox=69.270%2C41.325%2C69.300%2C41.345&amp;layer=mapnik&amp;marker=41.3350%2C69.2850"
+        ></iframe>
+      </section>
+    </main>
+
+    <!-- ======================= FOOTER ======================= -->
+    <footer>
+      <div class="wrap">
+        <div class="f-grid">
+          <div>
+            <span class="brand">
+              <svg viewBox="0 0 100 100" aria-hidden="true">
+                <path
+                  d="M28 30h36a14 14 0 0 1 0 28h-4v4a12 12 0 0 1-12 12H40a12 12 0 0 1-12-12V30zm36 8v12a6 6 0 0 0 0-12z"
+                  fill="currentColor"
+                />
+              </svg>
+              <span>MEZZO<small>coffee &amp; kitchen</small></span>
+            </span>
+            <p class="f-about">
+              Mutaxassis qahva, kunlik nonvoyxona va mavsumiy oshxona.
+              2016-yildan Toshkentda.
+            </p>
+            <div class="socials">
+              <a
+                href="https://instagram.com/mezzo.coffee"
+                target="_blank"
+                rel="noopener"
+                aria-label="Instagram"
+              >
+                <svg viewBox="0 0 24 24">
+                  <rect x="3" y="3" width="18" height="18" rx="5" />
+                  <circle cx="12" cy="12" r="4" />
+                  <circle
+                    cx="17.2"
+                    cy="6.8"
+                    r="1"
+                    fill="currentColor"
+                    stroke="none"
+                  />
+                </svg>
+              </a>
+              <a
+                href="https://t.me/mezzo_cafe"
+                target="_blank"
+                rel="noopener"
+                aria-label="Telegram"
+              >
+                <svg viewBox="0 0 24 24">
+                  <path d="M21 4L3 11l5 2 2 6 3-4 5 4z" />
+                </svg>
+              </a>
+              <a
+                href="https://facebook.com"
+                target="_blank"
+                rel="noopener"
+                aria-label="Facebook"
+              >
+                <svg viewBox="0 0 24 24">
+                  <path
+                    d="M15 3h-2.5A4.5 4.5 0 0 0 8 7.5V10H6v4h2v7h4v-7h3l1-4h-4V7.5A.5.5 0 0 1 12.5 7H15z"
+                  />
+                </svg>
+              </a>
+              <a
+                href="https://www.youtube.com"
+                target="_blank"
+                rel="noopener"
+                aria-label="YouTube"
+              >
+                <svg viewBox="0 0 24 24">
+                  <rect x="2.5" y="5.5" width="19" height="13" rx="4" />
+                  <path d="M11 9.5l4 2.5-4 2.5z" />
+                </svg>
+              </a>
+            </div>
+          </div>
+
+          <div>
+            <h4>Sahifalar</h4>
+            <ul>
+              <li><a href="#haqida">Biz haqimizda</a></li>
+              <li><a href="#menyu">Menyu</a></li>
+              <li><a href="#tanlangan">Hafta takliflari</a></li>
+              <li><a href="#galereya">Galereya</a></li>
+              <li><a href="#band">Stol band qilish</a></li>
+            </ul>
+          </div>
+
+          <div>
+            <h4>Ish vaqti</h4>
+            <ul>
+              <li>Dush — Pay: 08:00–23:00</li>
+              <li>Juma — Shan: 08:00–01:00</li>
+              <li>Yakshanba: 09:00–23:00</li>
+              <li>Nonushta: 08:00–12:00</li>
+            </ul>
+          </div>
+
+          <div>
+            <h4>Aloqa</h4>
+            <ul>
+              <li><a href="tel:+998712007070">+998 71 200 70 70</a></li>
+              <li><a href="mailto:salom@mezzo.uz">salom@mezzo.uz</a></li>
+              <li>Amir Temur shoh ko'chasi 108,<br />Yunusobod t., Toshkent</li>
+            </ul>
+            <form class="subscribe" id="subscribe">
+              <label class="sr-only" for="s-mail">Email</label>
+              <input
+                id="s-mail"
+                type="email"
+                placeholder="Email — yangiliklar uchun"
+                required
+              />
+              <button class="btn btn--sm" type="submit">OK</button>
+            </form>
+            <p
+              class="muted"
+              id="sub-msg"
+              style="font-size: 0.78rem; margin-top: 8px; color: #f2b574"
+            ></p>
+          </div>
+        </div>
+
+        <div class="f-bottom">
+          <span
+            >© <span id="year">2026</span> MEZZO Coffee &amp; Kitchen. Demo
+            sayt.</span
+          >
+          <span>Barcha narxlar so'mda · Xizmat haqi 10%</span>
+        </div>
+      </div>
+    </footer>
+
+    <button
+      class="icon-btn to-top"
+      id="to-top"
+      type="button"
+      aria-label="Yuqoriga"
+    >
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M12 19V5M5 12l7-7 7 7" />
+      </svg>
+    </button>
+    <a
+      class="icon-btn call-fab"
+      href="tel:+998712007070"
+      aria-label="Qo'ng'iroq qilish"
+    >
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path
+          d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.5 2.8.6a2 2 0 0 1 1.7 2.1z"
+        />
+      </svg>
+    </a>
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "CafeOrCoffeeShop",
+        "name": "MEZZO Coffee & Kitchen",
+        "image": "https://images.unsplash.com/photo-1554118811-1e0d58224f24",
+        "priceRange": "18 000 – 90 000 UZS",
+        "servesCuisine": ["Coffee", "Breakfast", "European"],
+        "telephone": "+998712007070",
+        "email": "salom@mezzo.uz",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Amir Temur shoh ko'chasi 108",
+          "addressLocality": "Toshkent",
+          "addressRegion": "Yunusobod",
+          "addressCountry": "UZ"
+        },
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": 41.335,
+          "longitude": 69.285
+        },
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": "4.9",
+          "reviewCount": "1240"
+        },
+        "openingHoursSpecification": [
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday"],
+            "opens": "08:00",
+            "closes": "23:00"
+          },
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": ["Friday", "Saturday"],
+            "opens": "08:00",
+            "closes": "01:00"
+          },
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": "Sunday",
+            "opens": "09:00",
+            "closes": "23:00"
+          }
+        ]
+      }
+    </script>
+
+    <script>
+      (function () {
+        "use strict";
+        var $ = function (s, r) {
+          return (r || document).querySelector(s);
+        };
+        var $$ = function (s, r) {
+          return Array.prototype.slice.call(
+            (r || document).querySelectorAll(s),
+          );
+        };
+        var safe = {
+          get: function (k) {
+            try {
+              return localStorage.getItem(k);
+            } catch (e) {
+              return null;
+            }
+          },
+          set: function (k, v) {
+            try {
+              localStorage.setItem(k, v);
+            } catch (e) {}
+          },
+        };
+
+        /* ---------------- THEME ---------------- */
+        (function theme() {
+          var stored = safe.get("mezzo-theme");
+          if (stored === "dark" || stored === "light")
+            document.documentElement.dataset.theme = stored;
+          else document.documentElement.removeAttribute("data-theme");
+
+          $("#theme-btn").addEventListener("click", function () {
+            var current = document.documentElement.getAttribute("data-theme");
+            if (!current) {
+              current = window.matchMedia("(prefers-color-scheme: dark)")
+                .matches
+                ? "dark"
+                : "light";
+            }
+            var next = current === "dark" ? "light" : "dark";
+            document.documentElement.dataset.theme = next;
+            safe.set("mezzo-theme", next);
+          });
+        })();
+
+        /* ---------------- IMAGE FALLBACK ---------------- */
+        $$("img").forEach(function (img) {
+          img.addEventListener("error", function () {
+            img.classList.add("failed");
+            var p = img.closest(".ph") || img.parentElement;
+            if (p) p.classList.add("ph");
+          });
+        });
+
+        /* ---------------- NAV / DRAWER ---------------- */
+        var nav = $("#nav"),
+          drawer = $("#drawer"),
+          burger = $("#burger"),
+          toTop = $("#to-top");
+
+        function openDrawer(open) {
+          drawer.classList.toggle("open", open);
+          burger.setAttribute("aria-expanded", String(open));
+          document.body.classList.toggle("is-locked", open);
+          if (open) {
+            var f = drawer.querySelector(".d-link");
+            if (f) f.focus();
+          } else {
+            burger.focus();
+          }
+        }
+        burger.addEventListener("click", function () {
+          openDrawer(!drawer.classList.contains("open"));
+        });
+        $$("[data-close]", drawer).forEach(function (el) {
+          el.addEventListener("click", function () {
+            openDrawer(false);
+          });
+        });
+        $$(".d-link, .d-foot a[href^='#']", drawer).forEach(function (a) {
+          a.addEventListener("click", function () {
+            openDrawer(false);
+          });
+        });
+
+        window.addEventListener("keydown", function (e) {
+          if (e.key !== "Escape") return;
+          if (drawer.classList.contains("open")) openDrawer(false);
+          if ($("#lightbox").classList.contains("open")) closeLightbox();
+        });
+
+        var onScroll = function () {
+          var y = window.scrollY;
+          nav.classList.toggle("stuck", y > 8);
+          toTop.classList.toggle("show", y > 600);
+        };
+        window.addEventListener("scroll", onScroll, { passive: true });
+        onScroll();
+        toTop.addEventListener("click", function () {
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        });
+
+        /* active nav link */
+        var links = $$("#primary-menu a");
+        var sections = links
+          .map(function (a) {
+            return $(a.getAttribute("href"));
+          })
+          .filter(Boolean);
+        if ("IntersectionObserver" in window && sections.length) {
+          var navObs = new IntersectionObserver(
+            function (entries) {
+              entries.forEach(function (en) {
+                if (!en.isIntersecting) return;
+                links.forEach(function (a) {
+                  a.classList.toggle(
+                    "active",
+                    a.getAttribute("href") === "#" + en.target.id,
+                  );
+                });
+              });
+            },
+            { rootMargin: "-45% 0px -50% 0px" },
+          );
+          sections.forEach(function (s) {
+            navObs.observe(s);
+          });
+        }
+
+        /* ---------------- REVEAL ---------------- */
+        if ("IntersectionObserver" in window) {
+          var revObs = new IntersectionObserver(
+            function (entries) {
+              entries.forEach(function (en, i) {
+                if (!en.isIntersecting) return;
+                var el = en.target;
+                setTimeout(
+                  function () {
+                    el.classList.add("in");
+                  },
+                  Math.min(i * 80, 320),
+                );
+                revObs.unobserve(el);
+              });
+            },
+            { threshold: 0.12, rootMargin: "0px 0px -40px 0px" },
+          );
+          $$(".reveal").forEach(function (el) {
+            revObs.observe(el);
+          });
+        } else {
+          $$(".reveal").forEach(function (el) {
+            el.classList.add("in");
+          });
+        }
+
+        /* ---------------- MARQUEE (duplicate for seamless loop) ---------------- */
+        var mq = $("#marquee");
+        mq.innerHTML += mq.innerHTML;
+
+        /* ---------------- MENU DATA ---------------- */
+        var IMG = function (id, w) {
+          return (
+            "https://images.unsplash.com/photo-" +
+            id +
+            "?auto=format&fit=crop&w=" +
+            (w || 240) +
+            "&q=70"
+          );
+        };
+        var CATS = [
+          { id: "qahva", label: "Qahva" },
+          { id: "nonushta", label: "Nonushta" },
+          { id: "asosiy", label: "Asosiy taomlar" },
+          { id: "shirinlik", label: "Shirinliklar" },
+          { id: "ichimlik", label: "Ichimliklar" },
+        ];
+        var ITEMS = [
+          /* QAHVA */
+          {
+            c: "qahva",
+            n: "Espresso",
+            d: "Ikki porsiya don, qalin krema. 30 ml.",
+            p: 18000,
+            img: "1510591509098-f4fdc6d0ff04",
+            tags: [],
+          },
+          {
+            c: "qahva",
+            n: "Americano",
+            d: "Espresso va issiq suv, 200 ml. Sut bilan ham mumkin.",
+            p: 20000,
+            img: "1521302080334-4bebac2763a6",
+            tags: [],
+          },
+          {
+            c: "qahva",
+            n: "Cappuccino",
+            d: "Baxmal sut ko'pigi, 180 ml. Eng ko'p buyurtma qilinadigan.",
+            p: 26000,
+            img: "1572442388796-11668a67e53d",
+            tags: ["Hit"],
+          },
+          {
+            c: "qahva",
+            n: "Latte",
+            d: "Yumshoq ta'm, 300 ml. Siropni tanlashingiz mumkin.",
+            p: 28000,
+            img: "1509042239860-f550ce710b93",
+            tags: [],
+          },
+          {
+            c: "qahva",
+            n: "Flat White",
+            d: "Qo'sh espresso va mikroko'pik, 220 ml.",
+            p: 30000,
+            img: "1447933601403-0c6688de566e",
+            tags: [],
+          },
+          {
+            c: "qahva",
+            n: "Raf qahva",
+            d: "Qaymoq, vanil shakar va espresso. 250 ml.",
+            p: 34000,
+            img: "1461023058943-07fcbe16d735",
+            tags: ["Hit"],
+          },
+          {
+            c: "qahva",
+            n: "Mokka",
+            d: "Qora shokolad, sut va espresso. 300 ml.",
+            p: 32000,
+            img: "1578314675249-a6910f80cc4e",
+            tags: [],
+          },
+          {
+            c: "qahva",
+            n: "Cold Brew",
+            d: "16 soat sovuqda damlangan, muz bilan. 350 ml.",
+            p: 30000,
+            img: "1517701550927-30cf4ba1dba5",
+            tags: ["Yangi"],
+          },
+          {
+            c: "qahva",
+            n: "V60 Pour Over",
+            d: "Single-origin don, qo'lda damlama. 250 ml.",
+            p: 38000,
+            img: "1511920170033-f8396924c348",
+            tags: ["Barista"],
+          },
+
+          /* NONUSHTA */
+          {
+            c: "nonushta",
+            n: "Avokado tost",
+            d: "Xamirturushsiz non, avokado krem, qovurilgan tuxum, sumax.",
+            p: 42000,
+            img: "1588137378633-dea1336ce1e2",
+            tags: ["Hit"],
+          },
+          {
+            c: "nonushta",
+            n: "Shakshuka",
+            d: "Pomidor sousida ikki tuxum, feta va yangi non.",
+            p: 48000,
+            img: "1590412200988-a436970781fa",
+            tags: [],
+          },
+          {
+            c: "nonushta",
+            n: "Sirniklar",
+            d: "Uy tvorogidan, smetana va murabbo bilan. 4 dona.",
+            p: 38000,
+            img: "1565299507177-b0ac66763828",
+            tags: [],
+          },
+          {
+            c: "nonushta",
+            n: "Granola & yogurt",
+            d: "Uy granolasi, grek yogurti, mavsumiy mevalar.",
+            p: 32000,
+            img: "1517673400267-0251440c45dc",
+            tags: ["Vegan"],
+          },
+          {
+            c: "nonushta",
+            n: "Omlet 3 tuxumdan",
+            d: "Pishloq, qo'ziqorin yoki ismaloq tanlovi bilan.",
+            p: 36000,
+            img: "1525351484163-7529414344d8",
+            tags: [],
+          },
+          {
+            c: "nonushta",
+            n: "Kruassan (sodda)",
+            d: "Fransuz sariyog'ida, har kuni 05:30 da pishiriladi.",
+            p: 22000,
+            img: "1533920379810-6bedac9e31f4",
+            tags: [],
+          },
+          {
+            c: "nonushta",
+            n: "Bulochka & jem",
+            d: "Issiq bulochka, uy jemi va sariyog'.",
+            p: 24000,
+            img: "1509440159596-0249088772ff",
+            tags: [],
+          },
+
+          /* ASOSIY */
+          {
+            c: "asosiy",
+            n: "Qovurilgan tovuq sendvichi",
+            d: "Brioche non, achchiq-shirin sous, kolslou.",
+            p: 58000,
+            img: "1568901346375-23c9450c58cd",
+            tags: ["Hit"],
+          },
+          {
+            c: "asosiy",
+            n: "Caesar salat",
+            d: "Romano, parmezan, kruton, tovuq yoki qisqichbaqa.",
+            p: 52000,
+            img: "1550304943-4f24f54ddde9",
+            tags: [],
+          },
+          {
+            c: "asosiy",
+            n: "Tom Yum sho'rva",
+            d: "Qisqichbaqa, limon o'ti, kokos suti. Achchiq.",
+            p: 62000,
+            img: "1569718212165-3a8278d5f624",
+            tags: ["Achchiq"],
+          },
+          {
+            c: "asosiy",
+            n: "Pasta Carbonara",
+            d: "Guanciale, pekorino, qalampir. Klassik retsept.",
+            p: 65000,
+            img: "1612874742237-6526221588e3",
+            tags: [],
+          },
+          {
+            c: "asosiy",
+            n: "MEZZO Burger",
+            d: "200 g mol go'shti, chedder, tuzlangan bodring, fri.",
+            p: 72000,
+            img: "1565299624946-b28f40a0ae38",
+            tags: ["Hit"],
+          },
+          {
+            c: "asosiy",
+            n: "Qovurilgan sabzavot bowl",
+            d: "Kinoa, batat, no'xat xumusi, tahini.",
+            p: 54000,
+            img: "1512621776951-a57141f2eefd",
+            tags: ["Vegan"],
+          },
+          {
+            c: "asosiy",
+            n: "Qiyma lazanya",
+            d: "Uy xamiri, besamel va parmezan. 350 g.",
+            p: 68000,
+            img: "1574894709920-11b28e7367e3",
+            tags: [],
+          },
+
+          /* SHIRINLIK */
+          {
+            c: "shirinlik",
+            n: "Nyu-York cheesecake",
+            d: "Klassik, mavsumiy rezavor sousi bilan.",
+            p: 34000,
+            img: "1533134242443-d4fd215305ad",
+            tags: ["Hit"],
+          },
+          {
+            c: "shirinlik",
+            n: "Tiramisu",
+            d: "Mascarpone, savoyardi va bizning espressomiz.",
+            p: 36000,
+            img: "1571877227200-a0d98ea607e9",
+            tags: [],
+          },
+          {
+            c: "shirinlik",
+            n: "Medovik",
+            d: "8 qatlam asal koржи, qaymoq kremi.",
+            p: 30000,
+            img: "1551024601-bec78aea704b",
+            tags: [],
+          },
+          {
+            c: "shirinlik",
+            n: "Shokolad brownie",
+            d: "70% shokolad, issiq holda muzqaymoq bilan.",
+            p: 28000,
+            img: "1606313564200-e75d5e30476c",
+            tags: [],
+          },
+          {
+            c: "shirinlik",
+            n: "Napoleon",
+            d: "Qatlamli xamir, vanil kremi. Uy retsepti.",
+            p: 32000,
+            img: "1464195244916-405fa0a82545",
+            tags: [],
+          },
+          {
+            c: "shirinlik",
+            n: "Mavsumiy tart",
+            d: "Hozir: nok va rozmarin. Har hafta o'zgaradi.",
+            p: 35000,
+            img: "1488477181946-6428a0291777",
+            tags: ["Yangi"],
+          },
+
+          /* ICHIMLIK */
+          {
+            c: "ichimlik",
+            n: "Matcha latte",
+            d: "Ceremonial grade matcha, sut tanlovi bilan.",
+            p: 36000,
+            img: "1515823064-d6e0c04616a7",
+            tags: ["Vegan"],
+          },
+          {
+            c: "ichimlik",
+            n: "Uy limonadi",
+            d: "Limon-nok, tarxun yoki marakuya. 400 ml.",
+            p: 24000,
+            img: "1621263764928-df1444c5e859",
+            tags: [],
+          },
+          {
+            c: "ichimlik",
+            n: "Yangi apelsin sharbati",
+            d: "Faqat siqilgan, 300 ml.",
+            p: 28000,
+            img: "1613478223719-2ab802602423",
+            tags: ["Vegan"],
+          },
+          {
+            c: "ichimlik",
+            n: "Damlama choy (choynak)",
+            d: "Oolong, sencha, mitti yoki qora. 600 ml.",
+            p: 25000,
+            img: "1544787219-7f47ccb76574",
+            tags: [],
+          },
+          {
+            c: "ichimlik",
+            n: "Issiq shokolad",
+            d: "Belgiya shokoladi va marshmallow.",
+            p: 30000,
+            img: "1542990253-0d0f5be5f0ed",
+            tags: [],
+          },
+        ];
+
+        var fmt = function (n) {
+          return n.toLocaleString("ru-RU").replace(/ /g, " ") + " so'm";
+        };
+
+        var tabsEl = $("#tabs"),
+          gridEl = $("#menu-grid");
+        CATS.forEach(function (cat, i) {
+          var b = document.createElement("button");
+          b.className = "tab";
+          b.type = "button";
+          b.textContent = cat.label;
+          b.setAttribute("role", "tab");
+          b.setAttribute("aria-selected", i === 0 ? "true" : "false");
+          b.dataset.cat = cat.id;
+          b.addEventListener("click", function () {
+            select(cat.id);
+          });
+          tabsEl.appendChild(b);
+        });
+
+        function render(catId) {
+          var list = ITEMS.filter(function (it) {
+            return it.c === catId;
+          });
+          gridEl.innerHTML = list
+            .map(function (it) {
+              var tags = it.tags
+                .map(function (t) {
+                  return (
+                    '<span class="chip' +
+                    (t === "Vegan" ? " chip--green" : "") +
+                    '">' +
+                    t +
+                    "</span>"
+                  );
+                })
+                .join("");
+              return (
+                "" +
+                '<article class="dish">' +
+                '<div class="dish__img ph"><img loading="lazy" src="' +
+                IMG(it.img) +
+                '" alt="' +
+                it.n +
+                '" /></div>' +
+                '<div class="dish__body">' +
+                '<div class="dish__row">' +
+                '<h3 class="dish__name">' +
+                it.n +
+                "</h3>" +
+                '<span class="dish__dots"></span>' +
+                '<span class="dish__price">' +
+                fmt(it.p) +
+                "</span>" +
+                "</div>" +
+                '<p class="dish__desc">' +
+                it.d +
+                "</p>" +
+                (tags ? '<div class="dish__tags">' + tags + "</div>" : "") +
+                "</div>" +
+                "</article>"
+              );
+            })
+            .join("");
+          $$("#menu-grid img").forEach(function (img) {
+            img.addEventListener("error", function () {
+              img.classList.add("failed");
+            });
+          });
+        }
+
+        function select(catId) {
+          $$(".tab", tabsEl).forEach(function (t) {
+            t.setAttribute("aria-selected", String(t.dataset.cat === catId));
+          });
+          render(catId);
+        }
+        select(CATS[0].id);
+
+        /* ---------------- GALLERY + LIGHTBOX ---------------- */
+        var GAL = [
+          { id: "1554118811-1e0d58224f24", alt: "Kafening asosiy zali" },
+          { id: "1559496417-e7f25cb247f3", alt: "Qahva bar ustasi ishda" },
+          {
+            id: "1521017432531-fbd92d768814",
+            alt: "Derazadan tushgan yorug'lik va stollar",
+          },
+          {
+            id: "1517248135467-4c7edcad34c4",
+            alt: "Mehmonlar bilan to'la zal",
+          },
+          {
+            id: "1495474472287-4d71bcdd2085",
+            alt: "Yaqindan olingan kapuchino",
+          },
+          { id: "1559339352-11d035aa65de", alt: "Qahva bar va vitrina" },
+          { id: "1504674900247-0877df9cc836", alt: "Mavsumiy taom tarelkada" },
+          { id: "1534766438357-2b270dbd1b40", alt: "Terrassadagi stollar" },
+          { id: "1453614512568-c4024d13c247", alt: "Qovurilgan qahva donlari" },
+          {
+            id: "1493857671505-72967e2e2760",
+            alt: "Kechki yoritilgan ichki ko'rinish",
+          },
+        ];
+        var galEl = $("#gallery");
+        galEl.innerHTML = GAL.map(function (g, i) {
+          return (
+            '<button type="button" data-i="' +
+            i +
+            '" aria-label="' +
+            g.alt +
+            ' — kattalashtirish">' +
+            '<img loading="lazy" src="' +
+            IMG(g.id, 600) +
+            '" alt="' +
+            g.alt +
+            '" /></button>'
+          );
+        }).join("");
+
+        var lb = $("#lightbox"),
+          lbImg = $("#lb-img"),
+          lbIndex = 0,
+          lastFocus = null;
+        function openLightbox(i) {
+          lbIndex = (i + GAL.length) % GAL.length;
+          lbImg.src = IMG(GAL[lbIndex].id, 1400);
+          lbImg.alt = GAL[lbIndex].alt;
+          lb.classList.add("open");
+          document.body.classList.add("is-locked");
+          $("[data-lb-close]").focus();
+        }
+        function closeLightbox() {
+          lb.classList.remove("open");
+          document.body.classList.remove("is-locked");
+          if (lastFocus) lastFocus.focus();
+        }
+        galEl.addEventListener("click", function (e) {
+          var btn = e.target.closest("button[data-i]");
+          if (!btn) return;
+          lastFocus = btn;
+          openLightbox(Number(btn.dataset.i));
+        });
+        $("[data-lb-close]").addEventListener("click", closeLightbox);
+        $("[data-lb-prev]").addEventListener("click", function () {
+          openLightbox(lbIndex - 1);
+        });
+        $("[data-lb-next]").addEventListener("click", function () {
+          openLightbox(lbIndex + 1);
+        });
+        lb.addEventListener("click", function (e) {
+          if (e.target === lb) closeLightbox();
+        });
+        window.addEventListener("keydown", function (e) {
+          if (!lb.classList.contains("open")) return;
+          if (e.key === "ArrowLeft") openLightbox(lbIndex - 1);
+          if (e.key === "ArrowRight") openLightbox(lbIndex + 1);
+        });
+
+        /* ---------------- REVIEWS SLIDER ---------------- */
+        var REVIEWS = [
+          {
+            t: "Toshkentdagi eng yaxshi flat white. Ertalab ishga ketishdan oldin shu yerga kirmasam, kunim boshlanmaydi.",
+            n: "Dilnoza Ahmedova",
+            r: "Doimiy mehmon",
+          },
+          {
+            t: "Noutbuk bilan 3 soat o'tirdim — Wi-Fi tez, rozetka bor, hech kim bezovta qilmadi. Xizmat ko'rsatish ajoyib.",
+            n: "Sardor Yo'ldoshev",
+            r: "Frilanser",
+          },
+          {
+            t: "Tug'ilgan kunimni terrassada o'tkazdik. 18 kishi uchun menyuni o'zlari tuzib berdi, hammasi joyida bo'ldi.",
+            n: "Kamola Rasulova",
+            r: "Mehmon",
+          },
+          {
+            t: "Shakshuka va yangi non — bu yerga yakshanba nonushtasi uchun kelish an'anamizga aylandi.",
+            n: "Jasur va Malika",
+            r: "Oilaviy mehmonlar",
+          },
+          {
+            t: "Donlarni uylarida qovuradi, baristalar har bir savolga javob beradi. Qahva haqida ko'p narsa o'rgandim.",
+            n: "Timur Nazarov",
+            r: "Qahva havaskori",
+          },
+          {
+            t: "Shirinliklar juda ortiqcha shirin emas — Napoleon va medovik aynan buvim pishirgandek.",
+            n: "Zulfiya Karimova",
+            r: "Mehmon",
+          },
+        ];
+        var slidesEl = $("#slides"),
+          dotsEl = $("#dots");
+        slidesEl.innerHTML = REVIEWS.map(function (r) {
+          return (
+            '<div class="slide"><div class="review">' +
+            '<span class="stars" aria-label="5 dan 5">' +
+            Array(5)
+              .join()
+              .split(",")
+              .map(function () {
+                return '<svg viewBox="0 0 24 24"><path d="M12 2l3 6.6 7 .7-5.2 4.7 1.5 7L12 17.6 5.7 21l1.5-7L2 9.3l7-.7z"/></svg>';
+              })
+              .join("") +
+            "</span>" +
+            "<p>“" +
+            r.t +
+            "”</p>" +
+            '<div class="review__who"><span class="av">' +
+            r.n.charAt(0) +
+            "</span><div><b>" +
+            r.n +
+            "</b><span>" +
+            r.r +
+            "</span></div></div>" +
+            "</div></div>"
+          );
+        }).join("");
+
+        var perView = function () {
+          return window.matchMedia("(min-width:860px)").matches ? 2 : 1;
+        };
+        var pages = function () {
+          return Math.ceil(REVIEWS.length / perView());
+        };
+        var page = 0,
+          timer = null;
+
+        function buildDots() {
+          dotsEl.innerHTML = "";
+          for (var i = 0; i < pages(); i++) {
+            var d = document.createElement("button");
+            d.type = "button";
+            d.setAttribute("aria-label", i + 1 + "-sahifa");
+            d.addEventListener(
+              "click",
+              (function (idx) {
+                return function () {
+                  go(idx);
+                };
+              })(i),
+            );
+            dotsEl.appendChild(d);
+          }
+        }
+        function go(p) {
+          var total = pages();
+          page = (p + total) % total;
+          slidesEl.style.transform = "translateX(-" + page * 100 + "%)";
+          $$("button", dotsEl).forEach(function (d, i) {
+            d.setAttribute("aria-current", String(i === page));
+          });
+          restart();
+        }
+        function restart() {
+          if (timer) clearInterval(timer);
+          timer = setInterval(function () {
+            go(page + 1);
+          }, 6000);
+        }
+        buildDots();
+        go(0);
+        $("#rev-prev").addEventListener("click", function () {
+          go(page - 1);
+        });
+        $("#rev-next").addEventListener("click", function () {
+          go(page + 1);
+        });
+
+        var rsTimer;
+        window.addEventListener("resize", function () {
+          clearTimeout(rsTimer);
+          rsTimer = setTimeout(function () {
+            buildDots();
+            go(0);
+          }, 180);
+        });
+
+        /* swipe */
+        (function swipe() {
+          var x0 = null;
+          slidesEl.addEventListener(
+            "touchstart",
+            function (e) {
+              x0 = e.touches[0].clientX;
+            },
+            { passive: true },
+          );
+          slidesEl.addEventListener("touchend", function (e) {
+            if (x0 === null) return;
+            var dx = e.changedTouches[0].clientX - x0;
+            if (Math.abs(dx) > 45) go(page + (dx < 0 ? 1 : -1));
+            x0 = null;
+          });
+        })();
+
+        /* ---------------- COUNTERS ---------------- */
+        if ("IntersectionObserver" in window) {
+          var cObs = new IntersectionObserver(
+            function (entries) {
+              entries.forEach(function (en) {
+                if (!en.isIntersecting) return;
+                var el = en.target;
+                var target = parseFloat(el.dataset.count);
+                var dec = parseInt(el.dataset.decimals || "0", 10);
+                var suffix = el.dataset.suffix || "";
+                var start = performance.now(),
+                  dur = 1400;
+                (function step(now) {
+                  var t = Math.min((now - start) / dur, 1);
+                  var eased = 1 - Math.pow(1 - t, 3);
+                  el.textContent = (target * eased).toFixed(dec) + suffix;
+                  if (t < 1) requestAnimationFrame(step);
+                  else el.textContent = target.toFixed(dec) + suffix;
+                })(start);
+                cObs.unobserve(el);
+              });
+            },
+            { threshold: 0.5 },
+          );
+          $$("[data-count]").forEach(function (el) {
+            cObs.observe(el);
+          });
+        } else {
+          $$("[data-count]").forEach(function (el) {
+            el.textContent = el.dataset.count + (el.dataset.suffix || "");
+          });
+        }
+
+        /* ---------------- BOOKING FORM ---------------- */
+        var form = $("#booking");
+        var dateInput = $("#b-date");
+        var today = new Date();
+        var iso = function (d) {
+          return d.toISOString().slice(0, 10);
+        };
+        dateInput.min = iso(today);
+        dateInput.max = iso(new Date(today.getTime() + 60 * 864e5));
+        dateInput.value = iso(today);
+
+        var timeSel = $("#b-time");
+        for (var h = 8; h <= 22; h++) {
+          ["00", "30"].forEach(function (m) {
+            var o = document.createElement("option");
+            o.textContent = (h < 10 ? "0" + h : h) + ":" + m;
+            timeSel.appendChild(o);
+          });
+        }
+        timeSel.value = "19:00";
+
+        var RULES = {
+          name: function (v) {
+            if (!v.trim()) return "Ismingizni kiriting.";
+            if (v.trim().length < 3) return "Kamida 3 belgi kiriting.";
+            return "";
+          },
+          phone: function (v) {
+            var digits = v.replace(/\D/g, "");
+            if (!digits) return "Telefon raqamni kiriting.";
+            if (digits.length < 9) return "Raqam to'liq emas.";
+            return "";
+          },
+          guests: function (v) {
+            return v ? "" : "Mehmonlar sonini tanlang.";
+          },
+          date: function (v) {
+            if (!v) return "Sanani tanlang.";
+            if (v < dateInput.min) return "O'tgan sanani tanlay olmaysiz.";
+            return "";
+          },
+          time: function (v) {
+            return v ? "" : "Vaqtni tanlang.";
+          },
+        };
+
+        function validateField(el) {
+          var rule = RULES[el.name];
+          if (!rule) return true;
+          var msg = rule(el.value);
+          var wrap = el.closest(".field");
+          var err = wrap.querySelector(".err");
+          if (err) err.textContent = msg;
+          wrap.classList.toggle("invalid", Boolean(msg));
+          return !msg;
+        }
+
+        Object.keys(RULES).forEach(function (name) {
+          var el = form.elements[name];
+          if (!el) return;
+          el.addEventListener("blur", function () {
+            validateField(el);
+          });
+          el.addEventListener("input", function () {
+            if (el.closest(".field").classList.contains("invalid"))
+              validateField(el);
+          });
+        });
+
+        /* light phone formatting for +998 numbers */
+        var phone = form.elements.phone;
+        phone.addEventListener("input", function () {
+          var d = phone.value
+            .replace(/\D/g, "")
+            .replace(/^998/, "")
+            .slice(0, 9);
+          if (!d) {
+            phone.value = "";
+            return;
+          }
+          var out = "+998";
+          if (d.length > 0) out += " " + d.slice(0, 2);
+          if (d.length > 2) out += " " + d.slice(2, 5);
+          if (d.length > 5) out += " " + d.slice(5, 7);
+          if (d.length > 7) out += " " + d.slice(7, 9);
+          phone.value = out;
+        });
+
+        form.addEventListener("submit", function (e) {
+          e.preventDefault();
+          var ok = Object.keys(RULES).every(function (n) {
+            return validateField(form.elements[n]);
+          });
+          if (!ok) {
+            var bad = form.querySelector(
+              ".field.invalid input, .field.invalid select",
+            );
+            if (bad) bad.focus();
+            return;
+          }
+          var btn = $("#submit-btn");
+          btn.disabled = true;
+          var label = btn.textContent;
+          btn.textContent = "Yuborilmoqda…";
+
+          setTimeout(function () {
+            var box = $("#form-msg");
+            $("#form-msg-text").textContent =
+              form.elements.name.value.trim().split(" ")[0] +
+              ", rahmat! " +
+              form.elements.date.value +
+              " · " +
+              form.elements.time.value +
+              " · " +
+              form.elements.guests.value +
+              " uchun so'rov qabul qilindi. Tez orada qo'ng'iroq qilamiz.";
+            box.classList.add("show");
+            btn.disabled = false;
+            btn.textContent = label;
+            form.elements.note.value = "";
+            box.scrollIntoView({ behavior: "smooth", block: "center" });
+          }, 900);
+        });
+
+        /* ---------------- SUBSCRIBE ---------------- */
+        $("#subscribe").addEventListener("submit", function (e) {
+          e.preventDefault();
+          var input = $("#s-mail");
+          var okMail = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(input.value.trim());
+          $("#sub-msg").textContent = okMail
+            ? "Rahmat! Yangiliklar shu manzilga keladi."
+            : "Email manzilni to'g'ri kiriting.";
+          if (okMail) input.value = "";
+        });
+
+        /* ---------------- MISC ---------------- */
+        $("#year").textContent = new Date().getFullYear();
+      })();
+    </script>
+  </body>
+</html>
